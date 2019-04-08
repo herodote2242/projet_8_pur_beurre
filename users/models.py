@@ -1,13 +1,11 @@
 from django.db import models
 
-import favorites as favs
 
-
-class Users(models.Model):
-    id_user = models.AutoField()
-    name = models.CharField(max_length=50)
-    surname = models.CharField(max_length=75)
+class User(models.Model):
+    firstname = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
     password = models.CharField(max_length=16)
-    favorites = models.ForeignKey(favs.SavedFavorites,
-        on_delete=models.CASCADE,)
+
+
+# créer un propre user hérité de base_user pour créer un utilisateur juste mail + 
