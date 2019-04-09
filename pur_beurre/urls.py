@@ -1,13 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib import admin
-
-from . import views
 
 
 urlpatterns = [
     path('index/', admin.site.urls),
-    path('favorites/', views.favorites_view),
-    path('products/', views.products_view),
-    path('users/', views.users_view),
-    path('main/', views.main_view),
+    path('favorites/', include('favorites.urls')),
+    path('products/', include('products.urls')),
+    path('users/', include('users.urls')),
+    path('main/', include('main.urls')),
 ]
