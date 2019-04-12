@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 
-from forms import ConnexionForm
+from .forms import ConnexionForm
 
 
-def connexion_view(request):
+def connection_view(request):
     error = False
     if request.method == "POST":
         form = ConnexionForm(request.POST)
@@ -18,4 +18,4 @@ def connexion_view(request):
                 error = True
     else:
         form = ConnexionForm()
-    return render(request, 'connexion.html', locals())
+    return render(request, 'users/connection.html', locals())
