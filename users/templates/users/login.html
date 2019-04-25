@@ -1,0 +1,21 @@
+<h1>Connectez-vous ou inscrivez-vous !</h1>
+
+<h2>Se connecter :</h2>
+
+{% if error %}
+<p><strong>Vous avez fait une erreur sur le mot de passe et/ou votre identifiant.</strong></p>
+{% endif %}
+
+{% if user.is_authenticated %}
+Nous sommes heureux de vous revoir, {{ user.username }} !
+{% else %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Se connecter"/>
+</form>
+{% endif %}
+
+<h2>S'inscrire :</h2>
+<p>Veuillez renseigner votre mail et votre mot de passe.</p>
+

@@ -4,7 +4,7 @@ from django.db import models
 class Product(models.Model):
     name = models.CharField(max_length=200)
     brand = models.CharField(max_length=100)
-    id_product = models.BigIntegerField()
+    id_product = models.BigIntegerField(primary_key=True)
     nutrition_grade = models.CharField(max_length=1)
     description = models.TextField()
     picture_product = models.URLField()
