@@ -18,3 +18,21 @@ class Command(BaseCommand):
         # récupérer sur le p5 le database_feeder. utiliser la logique de nettoyage
         # récupérer les nouvelles infos (images, urls)
 
+    def fetch_data(self):
+        """This functions collects data from the Open Food Facts API
+        according to the criteria."""
+        products = {}
+        for category in config.CATEGORIES_TO_RECOVER:
+            url = "https://fr.openfoodfacts.org/cgi/search.pl"
+            criteria = {
+                "action": "process",
+                "tagtype_0": "categories",
+                "tag_contains_0": "contains",
+                "tag_0": category,
+                "sort_by": "product_name",
+                "page_size": config.NUMBER_OF_PRODUCTS,
+                "json": 1
+            }
+            req = requests.get(url, params=criteria)
+            data = req.json()
+            products['category'] = data['products']
