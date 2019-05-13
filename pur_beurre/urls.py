@@ -7,5 +7,5 @@ urlpatterns = [
     # path('favorites/', include('favorites.urls')),
     # path('products/', include('products.urls')),
     path('users/', include('users.urls')),
-    # path('main/', include('main.urls')),
+    path('', include('main.urls')),
 ]

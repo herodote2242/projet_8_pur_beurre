@@ -1,5 +1,9 @@
+import requests
 from django.core.management.base import BaseCommand, CommandError
-from polls.models import Question as Poll
+
+import config
+#ci dessous à modifier
+from products.models import Category, Product
 
 
 class Command(BaseCommand):
@@ -9,14 +13,9 @@ class Command(BaseCommand):
     """
 
     def handle(self, *args, **kargs):
-        # faire une fonction pour récupérer les produits depuis OFF
-        # dl quelques catégories 20 cat, 250 produits chacun,
-        # le reste pour les users et leurs favoris
-
         # récupérer chaque produit en base
         # product.object.create 
-        # récupérer sur le p5 le database_feeder. utiliser la logique de nettoyage
-        # récupérer les nouvelles infos (images, urls)
+        pass
 
     def fetch_data(self):
         """This functions collects data from the Open Food Facts API
@@ -36,3 +35,15 @@ class Command(BaseCommand):
             req = requests.get(url, params=criteria)
             data = req.json()
             products['category'] = data['products']
+
+    def product_invalid(self, product):
+        """This function checks if a product has all the informations
+        required. If no, it is invalid. If yes, it is valid and can
+        be saved in the database.
+        """
+        keys = ("code", "product_name", "brands", "pictures",
+                "categories", "url", "nutrition_grade_fr")
+        for key in keys:
+            if key not in product or not product[key]:
+                return True
+        return False
