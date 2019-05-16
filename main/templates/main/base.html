@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<!--- This is a website for the fake company Pur Beurre, which is a project from the Openclassroom's Dev Python / Django path. --->
+<!--- Created by Matthias GIL --->
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pur Beurre OC P8</title>
+        <meta name="description" content="Pur Beurre's (fake society) website, part of the Openclassroom's Python/Django Developer path">
+        <meta name="keywords" content="pur beurre, gras, vie, openclassroom, projet 8">
+        <meta name="author" content="Matthias GIL">
+        <!---<link rel="icon" type="image/png" href="favicons/favicon.ico" sizes="16x16">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+        --->
+    </head>
+
+    <body>
+        <header>
+            Bienvenue sur le site de Pur Beurre. Gras = vie ;)
+        </header>
+        <nav>
+            {% block nav %}
+
+            {% endblock %}
+        </nav>
+        <section id="content">
+            {% block content %}
+
+            {% endblock %}
+        </section>
+    </body>
+
+    <footer id="footer">
+        &copy; Pur Beurre | Design Matthias GIL
+    </footer>
+
+</html>
