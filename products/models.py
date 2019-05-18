@@ -1,4 +1,5 @@
 from django.db import models
+from .models import User
 
 
 class Product(models.Model):
@@ -37,4 +38,4 @@ class Favorite(models.Model):
     favorite_name = models.ForeignKey('Product', on_delete=models.DO_NOTHING,
         related_name='favorite')
     registered_user = models.ForeignKey('User', on_delete=models.DO_NOTHING,
-        related_name='registered user')
+        related_name='registered_user')

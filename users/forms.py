@@ -24,7 +24,7 @@ class SignUpForm(forms.Form):
     to be able to save favorites.
     """
     username = forms.CharField(label="Nom d'utilisateur", max_length=30)
-    email = forms.EmailField(label="Adresse mail", widgets=forms.EmailInput)    
+    email = forms.EmailField(label="Adresse mail", widget=forms.EmailInput)    
     password = forms.CharField(label="Mot de passe",
         widget=forms.PasswordInput)
     check_password = forms.CharField(
