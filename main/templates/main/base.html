@@ -18,6 +18,11 @@
 
     <body>
         <header>
+            {% if user.is_authenticated %}
+                <div class="status">Vous êtes connecté(e).</div>
+            {% else %}
+                <div class="status">Vous n'êtes pas connecté(e).</div>
+            {% endif %}
             <h2>Bienvenue sur le site de Pur Beurre. Le (bon) gras, c'est la vie.</h2>
         </header>
         <nav>

@@ -1,5 +1,4 @@
 from django.db import models
-from .models import User
 
 
 class Product(models.Model):
@@ -28,14 +27,3 @@ class Category(models.Model):
     categories existing in this project.
     """
     category_name = models.CharField(max_length=75)
-
-
-class Favorite(models.Model):
-    """
-    A favorite is stored in the database when a particular user finds a
-    particular product.
-    """
-    favorite_name = models.ForeignKey('Product', on_delete=models.DO_NOTHING,
-        related_name='favorite')
-    registered_user = models.ForeignKey('User', on_delete=models.DO_NOTHING,
-        related_name='registered_user')

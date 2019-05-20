@@ -11,12 +11,6 @@ class ConnexionForm(forms.Form):
                                widget=forms.PasswordInput)
 
 
-class SearchForm(forms.Form):
-    """
-    This class creates the form used by the visitor to search a product.
-    """
-    product_to_search = forms.CharField(label="Rechercher un produit", max_length=100)
-
 class SignUpForm(forms.Form):
     """
     With this class, a visitor can register his profile in the database. It
