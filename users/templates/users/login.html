@@ -1,25 +1,29 @@
-<h1>Connectez-vous</h1>
+{% extends "main/base.html" %}
 
-<ul>
-    <li>
-        <h2>Se connecter :</h2>
+{% block content %}
+    <h1>Connectez-vous</h1>
 
-        {% if error %}
-        <p><strong>Vous avez fait une erreur sur le mot de passe et/ou votre identifiant.</strong></p>
-        {% endif %}
+    <ul>
+        <li>
+            <h2>Se connecter :</h2>
 
-        {% if user.is_authenticated %}
-        Nous sommes heureux de vous revoir, {{ user.username }} !
-        {% else %}
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Se connecter"/>
-        </form>
-        {% endif %}
-    </li>
-    <li>
-        <h2>Revenir à l'accueil : <a href="home.html"></a>Home.</h2>
-    </li>
-</ul>
-<!--- mettre un formulaire simple avec envoyer pour le champ de recherche--->
+            {% if error %}
+            <p><strong>Vous avez fait une erreur sur le mot de passe et/ou votre identifiant.</strong></p>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+            Nous sommes heureux de vous revoir, {{ user.username }} !
+            {% else %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Se connecter"/>
+            </form>
+            {% endif %}
+        </li>
+        <li>
+            <h2>Revenir à l'accueil : <a href="home.html"></a>Home.</h2>
+        </li>
+    </ul>
+    <!--- mettre un formulaire simple avec envoyer pour le champ de recherche--->
+{% endblock %}

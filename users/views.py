@@ -31,7 +31,7 @@ def connexion(request):
 def deconnexion(request):
     if request.user.is_authenticated:
         logout(request)
-        return redirect('home')
+    return redirect('main:home')
 
 
 def signup(request):
