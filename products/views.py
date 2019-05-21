@@ -1,4 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
-vue search_products pour rechercher des produits
+
+def search_products(request):
+    """
+    This function is responsible of searching the products according to what
+    is written by the visitor in the search box.
+    """
+    pass

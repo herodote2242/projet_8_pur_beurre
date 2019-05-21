@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 class ConnexionForm(forms.Form):
@@ -11,16 +13,23 @@ class ConnexionForm(forms.Form):
                                widget=forms.PasswordInput)
 
 
-class SignUpForm(forms.Form):
+class SignUpForm(UserCreationForm):
     """
     With this class, a visitor can register his profile in the database. It
     allows the visitor to be a member, to log in and log out, and of course
     to be able to save favorites.
     """
-    username = forms.CharField(label="Nom d'utilisateur", max_length=30)
-    email = forms.EmailField(label="Adresse mail", widget=forms.EmailInput)    
+    username = forms.CharField(label="Nom d'utilisateur", max_length=30,
+        required=False, help_text='Optionnel')
+    email = forms.EmailField(label="Adresse mail", widget=forms.EmailInput,
+        max_length=254, help_text=
+        'Obligatoire. Renseignez une addresse mail valide.')
     password = forms.CharField(label="Mot de passe",
-        widget=forms.PasswordInput)
+        widget=forms.PasswordInput, help_text='Obligatoire.')
     check_password = forms.CharField(
         label="Vérification du mot de passe saisi",
-        widget=forms.PasswordInput)
+        widget=forms.PasswordInput, help_text='Obligatoire.')
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password', 'check_password',)
