@@ -22,14 +22,14 @@ class SignUpForm(UserCreationForm):
     username = forms.CharField(label="Nom d'utilisateur", max_length=30,
         required=False, help_text='Optionnel')
     email = forms.EmailField(label="Adresse mail", widget=forms.EmailInput,
-        max_length=254, help_text=
+        max_length=254, required=True, help_text=
         'Obligatoire. Renseignez une addresse mail valide.')
-    password = forms.CharField(label="Mot de passe",
+    password1 = forms.CharField(label="Mot de passe",
         widget=forms.PasswordInput, help_text='Obligatoire.')
-    check_password = forms.CharField(
+    password2 = forms.CharField(
         label="Vérification du mot de passe saisi",
         widget=forms.PasswordInput, help_text='Obligatoire.')
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password', 'check_password',)
+        fields = ('username', 'email', 'password1', 'password2',)
