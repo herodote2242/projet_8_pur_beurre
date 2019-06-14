@@ -34,11 +34,12 @@ class Command(BaseCommand):
 
     def product_invalid(self, product):
         """This function checks if a product has all the informations
-        required. If no, it is invalid. If yes, it is valid and can
-        be saved in the database.
+        required. If a product is invalid, it returns True. If it is valid
+        it returns False. Only in this case we can save it in the database.
         """
-        keys = ("code", "product_name", "brands", "pictures",
-                "categories", "url", "nutrition_grade_fr", "description")
+        keys = ("code", "product_name", "brands", "categories_fr",
+                "url_link", "nutrition_grade_fr", "description",
+                "image_url", "image_small_url")
         for key in keys:
             if key not in product or not product[key]:
                 return True
@@ -46,12 +47,20 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **kargs):
+        """This function is called to feed the local database. If the
+        'product_invalid' function returns False for a product, it is
+        saved in the local database, with its keys filling the columns.
+        """
         self.fetch_data()
-        # commande pour enregistrer en base
         for category in self.products:
             category = Category.objects.get_or_create(category_name=category)
             for product in self.products['category']:
                 if self.product_invalid(product):
                     continue
-                product = Product.objects.create(name=product['name'], code=...)
-                #ainsi de suite pour les autres champs
+                product = Product.objects.create(name=product['product_name'],
+                    id_product=product['code'], nutrition_grade=
+                    product['nutrition_grade_fr'], category=category,
+                    brand=product['brands'], url=product['url_link'], description=
+                    product['description'], image_url=product['image_url'],
+                    image_small_url=product['image_small_url'])
+

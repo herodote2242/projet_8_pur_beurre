@@ -27,3 +27,4 @@ class Category(models.Model):
     categories existing in this project.
     """
     category_name = models.CharField(max_length=75)
+
