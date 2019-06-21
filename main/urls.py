@@ -8,4 +8,5 @@ app_name = 'main'
 urlpatterns = [
     path('', views.home, name="home"),
     path('admin/', admin.site.urls),
+    path('autocomplete/', views.autocomplete, name="autocomplete"),
 ]
