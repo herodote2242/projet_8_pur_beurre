@@ -1,7 +1,7 @@
 import requests
 from django.core.management.base import BaseCommand, CommandError
 
-from main import config
+from config import CATEGORIES_TO_RECOVER, NUMBER_OF_PRODUCTS
 from products.models import Category, Product
 
 
@@ -58,9 +58,11 @@ class Command(BaseCommand):
                 if self.product_invalid(product):
                     continue
                 product = Product.objects.create(name=product['product_name'],
-                    id_product=product['code'], nutrition_grade=
-                    product['nutrition_grade_fr'], category=category,
-                    brand=product['brands'], url=product['url_link'], description=
-                    product['description'], image_url=product['image_url'],
+                    id_product=product['code'],
+                    nutrition_grade=product['nutrition_grade_fr'],
+                    category=category,
+                    brand=product['brands'],
+                    url=product['url_link'],
+                    description=product['description'],
+                    image_url=product['image_url'],
                     image_small_url=product['image_small_url'])
-
