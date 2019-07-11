@@ -17,3 +17,4 @@ def autocomplete(request):
     # To receive all the answers in a object list :
     products_list = [product.name for product in products]
     return JsonResponse(products_list, safe=False)
+
