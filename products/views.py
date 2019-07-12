@@ -13,7 +13,7 @@ def search(request):
     """
     product_searched = request.GET.get('page')
     user = request.user
-    category = Category.objects.get(name__icontains=search_products,
+    category = Category.objects.get(name__icontains=product_searched,
         alternative=False)
     product = Product.objects.filter(catgory_id=category_id)
 

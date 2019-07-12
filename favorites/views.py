@@ -8,4 +8,4 @@ def favorite(request):
     when clicking on an product'picture.
     """
     
-    return render(request, )
+    return render(request, 'favorite/templates/favorite.html')
